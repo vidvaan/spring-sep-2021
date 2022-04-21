@@ -6,5 +6,21 @@
     <bean id="network" class="com.createiq.model.AirtelNetwork">
       
     </bean>
+    
+    <bean id="address" class="com.createiq.model.Address">
+         <property name="city" value="sklm"></property>
+         <property name="state" value="AP"></property>
+    </bean>
+    
+     <bean id="employee" class="com.createiq.model.Employee">
+          <!-- <property name="eid" value="1001"></property>
+          <property name="ename" value="Balaji"></property>
+          <property name="esal" value="20000.00"></property>
+          <property name="address" ref="address"></property> -->
+          <constructor-arg value="1001" index="0" type="int"></constructor-arg>
+          <constructor-arg value="Balaji" index="1" type="java.lang.String"></constructor-arg>
+          <constructor-arg value="20000.00" index="2" type="double"></constructor-arg>
+          <constructor-arg ref="address"></constructor-arg>
+    </bean>
 
 </beans>
