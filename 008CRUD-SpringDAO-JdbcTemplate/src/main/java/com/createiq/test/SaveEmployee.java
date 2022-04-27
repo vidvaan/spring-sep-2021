@@ -1,19 +1,25 @@
 package com.createiq.test;
 
+import java.util.List;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.createiq.config.SpringConfig;
 import com.createiq.controller.EmployeeController;
+import com.createiq.dao.EmployeeDAOImpl;
 import com.createiq.model.Employee;
 
 public class SaveEmployee {
-	
+
 	public static void main(String[] args) {
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml");
 		EmployeeController employeeController = (EmployeeController) applicationContext.getBean("employeeController");
-		employeeController.save(new Employee(1005,"Prasad",20000.00));
+		List<Employee> employees = employeeController.findAll();
+		for (Employee employee : employees) {
+			System.out.println(employee);
+		}
 	}
 
 }
