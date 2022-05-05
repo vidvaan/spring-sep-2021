@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.createiq.model.Employee;
 import com.createiq.service.EmployeeService;
@@ -36,5 +37,28 @@ public class EmployeeController {
 		employeeService.add(employee);
 		return "redirect:/findAll";
 	}
+	
+	
+	@RequestMapping("/updateEmp")
+	public String updateEmp(@RequestParam int eid,Model model) {
+		Employee employee = employeeService.findById(eid);
+		model.addAttribute(employee);
+		return "updateEmp";
+	}
+	
+	
+	@RequestMapping(value = "/updateEmp",method = RequestMethod.POST)
+	public String updateEmp(Employee employee) {
+		employeeService.update(employee);
+		return "redirect:/findAll";
+	}
+	
+	@RequestMapping("/deleteEmp")
+	public String delteEmp(@RequestParam int eid) {
+	    employeeService.delete(eid);
+		return "redirect:/findAll";
+	}
+	
+	
 
 }

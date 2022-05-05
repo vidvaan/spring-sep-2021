@@ -15,12 +15,16 @@
 			<th>Eid</th>
 			<th>Ename</th>
 			<th>Esal</th>
+			<th>Update</th>
+			<th>Delete</th>
 		</tr>
 	   <c:forEach items="${employees}" var="employee">
 		<tr>
 			<td>${employee.eid}</td>
 			<td>${employee.ename}</td>
 			<td>${employee.esal}</td>
+			<td><a href="./updateEmp?eid=${employee.eid}">Update</a></td>
+			<td><a href="./deleteEmp?eid=${employee.eid}">Delete</a></td>
 		</tr>
 		</c:forEach>
 		

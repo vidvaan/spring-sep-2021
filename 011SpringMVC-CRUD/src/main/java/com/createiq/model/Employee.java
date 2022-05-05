@@ -1,8 +1,19 @@
 package com.createiq.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table
 public class Employee {
+	@Id
+	@Column
 	private int eid;
+	@Column
 	private String ename;
+	@Column
 	private double esal;
 
 	public Employee() {

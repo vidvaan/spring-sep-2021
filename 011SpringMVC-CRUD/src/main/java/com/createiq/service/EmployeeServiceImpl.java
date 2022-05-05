@@ -1,45 +1,38 @@
 package com.createiq.service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.createiq.dao.EmployeeDAO;
 import com.createiq.model.Employee;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
-
-	private Map<Integer, Employee> map = null;
-
-	{
-		map = new HashMap<Integer, Employee>();
-		map.put(1001, new Employee(1001, "Balaji", 20000.00));
-		map.put(1002, new Employee(1002, "Raja", 20000.00));
-		map.put(1003, new Employee(1003, "Roy", 20000.00));
-		map.put(1004, new Employee(1004, "Joy", 20000.00));
-	}
+	@Autowired
+	private EmployeeDAO employeeDAO;
 
 	public List<Employee> findAll() {
-		return new ArrayList<Employee>(map.values());
+		return employeeDAO.findAll();
 	}
 
 	public Employee findById(int eid) {
-		return null;
+		return employeeDAO.findById(eid);
 	}
 
 	public void add(Employee employee) {
-        map.put(employee.getEid(), employee);
+		employeeDAO.add(employee);
 	}
 
 	public void update(Employee employee) {
-
+		employeeDAO.update(employee);
 	}
 
 	public void delete(int eid) {
-
+		employeeDAO.delete(eid);		
 	}
+
+	
 
 }
